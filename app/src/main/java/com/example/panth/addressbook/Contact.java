@@ -3,6 +3,7 @@ package com.example.panth.addressbook;
 import android.content.Context;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by panth on 7/21/2016.
@@ -59,4 +60,18 @@ public class Contact {
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    public static Comparator<Contact> COMPARE_BY_FIRST = new Comparator<Contact>() {
+        @Override
+        public int compare(Contact contact, Contact contact2) {
+            return contact.getFirstName().compareTo(contact2.getFirstName());
+        }
+    };
+
+    public static Comparator<Contact> COMPARE_BY_LAST = new Comparator<Contact>() {
+        @Override
+        public int compare(Contact contact, Contact contact2) {
+            return contact.getLastName().compareTo(contact2.getLastName());
+        }
+    };
 }
