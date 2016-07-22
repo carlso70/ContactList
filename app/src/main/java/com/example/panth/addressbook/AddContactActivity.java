@@ -9,5 +9,8 @@ public class AddContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
+
+
+        //TODO when done with activity don't forget to finish it
     }
 }
