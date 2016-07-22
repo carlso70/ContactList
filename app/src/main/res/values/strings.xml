@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AddressBook</string>
+    <string name="Remove">-</string>
+    <string name="Add">+</string>
+</resources>
