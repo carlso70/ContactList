@@ -8,7 +8,7 @@ import java.util.Comparator;
 /**
  * Created by panth on 7/21/2016.
  */
-public class Contact {
+public class Contact implements Serializable {
 
     private String firstName;
     private String lastName;
@@ -27,6 +27,13 @@ public class Contact {
         this.lastName = lastName;
         this.address = address;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Contact() {
+        this.firstName = "";
+        this.lastName = "";
+        this.dateOfBirth = "";
+        this.address = "";
     }
 
     public String getFirstName() {

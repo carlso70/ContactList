@@ -15,7 +15,7 @@ public class AddressBookActivity extends AppCompatActivity {
     private Button bAddContact;
     private Button bRemoveContact;
     private AddressBook addressBook;
-    public static final String ADDRESSBOOK_KEY = "addressBook";
+    public static final String ADDRESS_BOOK_KEY = "addressBook";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,17 @@ public class AddressBookActivity extends AppCompatActivity {
 
     private void createContact() {
         Intent intent = new Intent(AddressBookActivity.this, AddContactActivity.class);
-        intent.putExtra(ADDRESSBOOK_KEY, addressBook);
-        startActivity(intent);
+        intent.putExtra(ADDRESS_BOOK_KEY, addressBook);
+        startActivityForResult(intent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                Contact contact = (Contact) data.getSerializableExtra(ADDRESS_BOOK_KEY);
+                System.out.println("Contact first name " + contact.getFirstName());
+            }
+        }
     }
 }
