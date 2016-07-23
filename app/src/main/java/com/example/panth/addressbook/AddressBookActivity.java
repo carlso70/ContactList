@@ -13,6 +13,7 @@ public class AddressBookActivity extends AppCompatActivity {
 
     private ListView lvContacts;
     private Button bAddContact;
+    private AddressBookContactAdapter contactAdapter;
     private Button bRemoveContact;
     private AddressBook addressBook;
     public static final String ADDRESS_BOOK_KEY = "addressBook";
@@ -25,17 +26,21 @@ public class AddressBookActivity extends AppCompatActivity {
         // TODO implement saving the address book
         addressBook = new AddressBook();
 
+        // Basic UI
         lvContacts = (ListView) findViewById(R.id.Contacts);
         bAddContact = (Button) findViewById(R.id.addContactButton);
         bRemoveContact = (Button) findViewById(R.id.removeContactButton);
-
-        // Create contact button
         bAddContact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createContact();
             }
         });
+
+        // Adapter/ ListView
+        contactAdapter = new AddressBookContactAdapter(this, addressBook.getAddressBook());
+        lvContacts.setAdapter(contactAdapter);
+        refreshContactList();
     }
 
     private void createContact() {
@@ -48,9 +53,20 @@ public class AddressBookActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
+
                 Contact contact = (Contact) data.getSerializableExtra(ADDRESS_BOOK_KEY);
                 System.out.println("Contact first name " + contact.getFirstName());
+
+                addressBook.add(contact);
+                refreshContactList();
             }
+        }
+    }
+
+    private void refreshContactList() {
+        addressBook.sortAddressBook();
+        for (Contact contact : addressBook.getAddressBook()) {
+            contactAdapter.add(contact);
         }
     }
 }

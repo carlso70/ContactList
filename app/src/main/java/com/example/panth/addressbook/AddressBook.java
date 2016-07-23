@@ -17,12 +17,12 @@ public class AddressBook implements Serializable {
         ALPHABETICAL_FIRST_NAME, REVERSE_ALPHABETICAL_FIRST_NAME , ALPHABETICAL_LAST_NAME, REVERSE_ALPHABETICAL_LAST_NAME;
     }
 
-    private List<Contact> addressBook;
+    private ArrayList<Contact> addressBook;
     private SortSettings settings;
 
     public AddressBook() {
         settings = SortSettings.ALPHABETICAL_LAST_NAME;
-        addressBook = new ArrayList<>();
+        addressBook = new ArrayList<Contact>();
     }
 
     public void add(Contact person) {
@@ -54,4 +54,9 @@ public class AddressBook implements Serializable {
                 break;
         }
     }
+
+    public ArrayList<Contact> getAddressBook() {
+        return addressBook;
+    }
+
 }
