@@ -42,7 +42,7 @@ public class AddContactActivity extends AppCompatActivity {
         // Check if text fields are empty
         if (firstNameText.getText().toString() == "" || lastNameText.getText().toString() == ""
                 || dateOfBirthText.getText().toString() == "" || addressText.getText().toString() == "") {
-            Toast.makeText(AddContactActivity.this, NULL_TEXT_FIELDS_ERROR, Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), NULL_TEXT_FIELDS_ERROR, Toast.LENGTH_SHORT);
             return;
         }
 

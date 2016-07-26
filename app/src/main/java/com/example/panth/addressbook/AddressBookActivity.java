@@ -44,7 +44,7 @@ public class AddressBookActivity extends AppCompatActivity {
     }
 
     private void createContact() {
-        Intent intent = new Intent(AddressBookActivity.this, AddContactActivity.class);
+        Intent intent = new Intent(getApplicationContext(), AddContactActivity.class);
         intent.putExtra(ADDRESS_BOOK_KEY, addressBook);
         startActivityForResult(intent, 1);
     }
@@ -54,8 +54,9 @@ public class AddressBookActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
 
-                Contact contact = (Contact) data.getSerializableExtra(ADDRESS_BOOK_KEY);
-                System.out.println("Contact first name " + contact.getFirstName());
+                Bundle bundle = data.getExtras();
+                Contact contact = (Contact) bundle.get(ADDRESS_BOOK_KEY);
+                //System.out.println("Contact first name " + contact.getFirstName());
 
                 addressBook.add(contact);
                 refreshContactList();

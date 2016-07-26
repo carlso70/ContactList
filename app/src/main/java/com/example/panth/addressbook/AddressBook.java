@@ -27,7 +27,6 @@ public class AddressBook implements Serializable {
 
     public void add(Contact person) {
         addressBook.add(person);
-        sortAddressBook();
     }
 
     public void setSortSetting(SortSettings settings) {
