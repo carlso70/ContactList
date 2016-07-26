@@ -15,8 +15,14 @@ import java.util.ArrayList;
  * Created by panth on 7/23/2016.
  */
 public class AddressBookContactAdapter extends ArrayAdapter<Contact> {
+
+    private ArrayList<Contact> contacts;
+
     public AddressBookContactAdapter(Context context, ArrayList<Contact> contacts) {
         super(context, 0, contacts);
+
+        this.contacts = contacts;
+
     }
 
     @Override
@@ -42,5 +48,14 @@ public class AddressBookContactAdapter extends ArrayAdapter<Contact> {
         addressText.setText(contact.getAddress());
 
         return convertView;
+    }
+
+
+    public ArrayList<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(ArrayList<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

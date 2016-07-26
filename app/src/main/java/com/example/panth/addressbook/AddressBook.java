@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class AddressBook implements Serializable {
         this.settings = settings;
     }
 
-    public void sortAddressBook() {
+    public void sortAddressBook(ArrayList<Contact> addressBook) {
         switch (settings) {
             case ALPHABETICAL_FIRST_NAME:
                 Collections.sort(addressBook, Contact.COMPARE_BY_FIRST);

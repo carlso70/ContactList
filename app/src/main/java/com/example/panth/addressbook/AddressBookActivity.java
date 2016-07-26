@@ -58,16 +58,18 @@ public class AddressBookActivity extends AppCompatActivity {
                 Contact contact = (Contact) bundle.get(ADDRESS_BOOK_KEY);
                 //System.out.println("Contact first name " + contact.getFirstName());
 
-                addressBook.add(contact);
+
+                //TODO find out if this adds to arraylist in contactAdapter
+                contactAdapter.getContacts().add(contact);
+
                 refreshContactList();
             }
         }
     }
 
     private void refreshContactList() {
-        addressBook.sortAddressBook();
-        for (Contact contact : addressBook.getAddressBook()) {
-            contactAdapter.add(contact);
-        }
+        // Sort the address book using the static method in AddressBook class
+        addressBook.sortAddressBook(contactAdapter.getContacts());
+        contactAdapter.notifyDataSetChanged();
     }
 }
